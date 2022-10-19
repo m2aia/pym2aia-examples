@@ -1,0 +1,9 @@
+[submodule "SimCLR"]
+	path = SimCLR
+	url = https://github.com/m2aia/pym2aia-examples-MSI-self-supervised-clustering
+	ignore = dirty
+
+[submodule "msiPL"]
+	path = msiPL
+	url = https://github.com/m2aia/pym2aia-examples-msiPL
+	ignore = dirty
