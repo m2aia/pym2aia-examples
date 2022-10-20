@@ -1,6 +1,6 @@
 [submodule "pym2aia-examples-msiPL"]
-	path = pym2aia-examples-msiPL
+	path = msiPL
 	url = https://github.com/m2aia/pym2aia-examples-msiPL
 [submodule "pym2aia-examples-MSI-self-supervised-clustering"]
-	path = pym2aia-examples-MSI-self-supervised-clustering
+	path = SimCLR
 	url = https://github.com/m2aia/pym2aia-examples-MSI-self-supervised-clustering
