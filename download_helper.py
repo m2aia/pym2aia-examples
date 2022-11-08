@@ -42,13 +42,13 @@ def DownloadMTBLS2639(selection: List[int] = None) -> List[str]:
                 print("Alternative url not found!")
         
         
-        # if not os.path.exists(f"{i}.imzML"):
-        #     print("Start download", f"{i}.imzML")
-        #     wget.download(f"https://www.ebi.ac.uk/metabolights/ws/studies/MTBLS2639/download/b79faad9-e66d-4b17-bccf-bd7196f69d90?file={i}.imzML")
+        if not os.path.exists(f"{i}.imzML"):
+            print("Start download", f"{i}.imzML")
+            wget.download(f"https://www.ebi.ac.uk/metabolights/ws/studies/MTBLS2639/download/b79faad9-e66d-4b17-bccf-bd7196f69d90?file={i}.imzML")
         
-        # if not os.path.exists(f"{i}.ibd"):
-        #     print("Start download", f"{i}.ibd")
-        #     wget.download(f"https://www.ebi.ac.uk/metabolights/ws/studies/MTBLS2639/download/b79faad9-e66d-4b17-bccf-bd7196f69d90?file={i}.ibd")
+        if not os.path.exists(f"{i}.ibd"):
+            print("Start download", f"{i}.ibd")
+            wget.download(f"https://www.ebi.ac.uk/metabolights/ws/studies/MTBLS2639/download/b79faad9-e66d-4b17-bccf-bd7196f69d90?file={i}.ibd")
         example_imzML_files.append(f"{i}.imzML")
         
     return example_imzML_files
