@@ -3,3 +3,7 @@ matplotlib==3.5.0
 seaborn
 seaborn_image
 tensorflow
+umap-learn
+torch
+torchvision
+efficientnet_pytorch
