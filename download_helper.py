@@ -35,6 +35,7 @@ def DownloadMTBLS2639(selection: List[int] = None) -> List[str]:
     for k, i in zip(selection,names):
         if not os.path.exists(f"{i}.ibd"):
             try:
+                print("Download files @https://data.jtfc.de")
                 wget.download(f"https://data.jtfc.de/MTBLS2639_{k}.zip")
                 with zipfile.ZipFile(f"MTBLS2639_{k}.zip", 'r') as zip_ref:
                     zip_ref.extractall()
