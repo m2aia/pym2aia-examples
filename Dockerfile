@@ -32,11 +32,9 @@ ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/m2aia/bin/MitkCore
 RUN python3 -m pip install git+https://github.com/m2aia/pym2aia jupyter wget
 RUN python3 -m pip install matplotlib seaborn
 
+
 VOLUME [ "/examples" ]
-RUN mkdir -p /examples
-COPY . /examples
-RUN chmod +x /examples/run.sh
 
 WORKDIR /examples
-VOLUME [ "/results" ]
+RUN mkdir -p results
 ENTRYPOINT [ "sh", "/examples/run.sh" ]

@@ -17,6 +17,8 @@ import os
 from unicodedata import name
 import wget
 import zipfile
+import pathlib
+
 
 
 def DownloadMTBLS2639(selection: List[int] = None) -> List[str]:
@@ -32,24 +34,27 @@ def DownloadMTBLS2639(selection: List[int] = None) -> List[str]:
     if selection:
         names = [names[s-1] for s in selection]
 
+    path = pathlib.Path('data')
+    path.mkdir(parents=True, exist_ok=True)
+
     for k, i in zip(selection,names):
-        if not os.path.exists(f"{i}.ibd"):
+        if not os.path.exists(path.joinpath(f"{i}.ibd")):
             try:
                 print("Download files @https://data.jtfc.de")
-                wget.download(f"https://data.jtfc.de/MTBLS2639_{k}.zip")
+                wget.download(f"https://data.jtfc.de/MTBLS2639_{k}.zip", out=path)
                 with zipfile.ZipFile(f"MTBLS2639_{k}.zip", 'r') as zip_ref:
-                    zip_ref.extractall()
+                    zip_ref.extractall(path)
             except:
                 print("Alternative url not found!")
         
         
-        if not os.path.exists(f"{i}.imzML"):
+        if not os.path.exists(path.joinpath(f"{i}.imzML")):
             print("Start download", f"{i}.imzML")
-            wget.download(f"https://www.ebi.ac.uk/metabolights/ws/studies/MTBLS2639/download/b79faad9-e66d-4b17-bccf-bd7196f69d90?file={i}.imzML")
+            wget.download(f"https://www.ebi.ac.uk/metabolights/ws/studies/MTBLS2639/download/b79faad9-e66d-4b17-bccf-bd7196f69d90?file={i}.imzML", out=path)
         
-        if not os.path.exists(f"{i}.ibd"):
+        if not os.path.exists(path.joinpath(f"{i}.ibd")):
             print("Start download", f"{i}.ibd")
-            wget.download(f"https://www.ebi.ac.uk/metabolights/ws/studies/MTBLS2639/download/b79faad9-e66d-4b17-bccf-bd7196f69d90?file={i}.ibd")
-        example_imzML_files.append(f"{i}.imzML")
+            wget.download(f"https://www.ebi.ac.uk/metabolights/ws/studies/MTBLS2639/download/b79faad9-e66d-4b17-bccf-bd7196f69d90?file={i}.ibd", out=path)
+        example_imzML_files.append(str(path.joinpath(f"{i}.imzML")))
         
     return example_imzML_files

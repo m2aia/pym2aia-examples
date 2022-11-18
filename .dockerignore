@@ -1,0 +1,6 @@
+__pycache__/
+results/
+MTBLS2639*
+.venv*
+*.ibd
+*.imzML
