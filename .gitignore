@@ -4,3 +4,5 @@ MTBLS2639*
 *.ibd
 *.imzML
 results/
+data/
+models/
