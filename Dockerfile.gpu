@@ -29,7 +29,7 @@ RUN tar -xvf /opt/packages/m2aia.tar.gz -C /opt/m2aia --strip-components=1
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/m2aia/bin
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/m2aia/bin/MitkCore
 RUN python3 -m pip install jupyter
-RUN python3 -m pip install matplotlib seaborn scipy wget
+RUN python3 -m pip install matplotlib==3.5.0 seaborn scipy wget seaborn_image umap-learn torch torchvision efficientnet_pytorch
 RUN python3 -m pip install git+https://github.com/m2aia/pym2aia.git
 
 VOLUME [ "/examples" ]

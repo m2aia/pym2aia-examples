@@ -4,6 +4,9 @@ DATA_DIR=data
 
 cd /examples
 
+# arg 1> Filename
+# arg 2> UserID
+
 if [ "$2" ]; then
   echo "Start notebook $1"
   jupyter nbconvert \
@@ -15,7 +18,7 @@ if [ "$2" ]; then
 fi
 
 if [ "$2" ]; then
-  echo "Change ownership of all documents in..."
+  echo "Change ownership of all documents to id $2 in..."
   if [ -d "$RESULT_DIR" ]; then 
     chown -R $2:$2 $RESULT_DIR
     echo "...$RESULT_DIR"
