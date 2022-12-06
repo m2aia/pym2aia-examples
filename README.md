@@ -4,7 +4,7 @@ to run the examples, install [M²aia](https://github.com/m2aia/m2aia) and [set s
 
 follow this instructions.
 
-1. ``` pip install git+https://github.com/m2aia/pym2aia.git ```
+1. Follow the [installation instructions](https://github.com/m2aia/pym2aia#readme) on pyM²aia's project site.
 2. ``` git clone https://github.com/m2aia/pym2aia-examples ```
 3. ``` cd pym2aia-examples ```
 4. ``` git submodule update --recursive --init ```
