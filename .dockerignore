@@ -4,3 +4,6 @@ MTBLS2639*
 .venv*
 *.ibd
 *.imzML
+results/
+data/
+models/

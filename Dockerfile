@@ -17,21 +17,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 
-# m2aia/m2aia:latest-build containes the latest M2aia installer
-# check https://m2aia.github.io/m2aia for download the packacge manually
-COPY --from=m2aia/m2aia:latest-package /opt/packages/m2aia.tar.gz /opt/packages/m2aia.tar.gz
-
-# we extract all files to this location
-RUN mkdir /opt/m2aia
-RUN tar -xvf /opt/packages/m2aia.tar.gz -C /opt/m2aia --strip-components=1
-
-# promote the required library path
-ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/m2aia/bin
-ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/m2aia/bin/MitkCore
-
-RUN python3 -m pip install git+https://github.com/m2aia/pym2aia jupyter wget
-RUN python3 -m pip install matplotlib seaborn
-
+RUN python3 -m pip install pip install https://github.com/m2aia/pym2aia/releases/download/v0.2.6/pym2aia-0.2.6-py3-none-linux_x86_64.whl
+RUN python3 -m pip install wget matplotlib==3.5.0 seaborn seaborn_image tensorflow umap-learn torch torchvision tensorflow efficientnet_pytorch jupyter
+ 
 
 VOLUME [ "/examples" ]
 
