@@ -6,4 +6,5 @@ tensorflow
 umap-learn
 torch
 torchvision
+tensorflow
 efficientnet_pytorch
