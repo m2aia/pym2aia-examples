@@ -17,7 +17,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 
-RUN python3 -m pip install pip install https://github.com/m2aia/pym2aia/releases/download/v0.2.6/pym2aia-0.2.6-py3-none-linux_x86_64.whl
+RUN python3 -m pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple pym2aia
 RUN python3 -m pip install wget matplotlib==3.5.0 seaborn seaborn_image tensorflow umap-learn torch torchvision tensorflow efficientnet_pytorch jupyter
  
 
