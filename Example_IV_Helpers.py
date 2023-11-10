@@ -1,6 +1,7 @@
 
 import m2aia as m2
 import tensorflow as tf
+import numpy as np
 
 
 # Running variance
@@ -30,4 +31,33 @@ class BatchSequence(tf.keras.utils.Sequence):
         self.gen.on_epoch_end()
     
     def __getitem__(self, index):
-        return self.gen.__getitem__(index)
+        X, Y = self.gen.__getitem__(index)
+        return X, Y
+
+
+def image_variance(I : m2.ImzMLReader):
+    # initialize running variance calculation
+    existingAggregate = (0, np.zeros_like(I.GetXAxis()), np.zeros_like(I.GetXAxis()))
+
+    # update the variance
+    for i in range(I.GetNumberOfSpectra()):
+        _, ys = I.GetSpectrum(i)
+        existingAggregate = running_variance_update(existingAggregate, ys)
+
+    # finalize running variance
+    _, var, _ = running_variance_finalize(existingAggregate)
+    return var
+
+def image_list_variance(images):
+    
+    # initialize running variance calculation
+    existingAggregate = (0, np.zeros_like(images[0].GetXAxis()), np.zeros_like(images[0].GetXAxis()))
+    for I in images:
+        # update the variance
+        for i in range(I.GetNumberOfSpectra()):
+            _, ys = I.GetSpectrum(i)
+            existingAggregate = running_variance_update(existingAggregate, ys)
+
+    # finalize running variance
+    _, var, _ = running_variance_finalize(existingAggregate)
+    return var

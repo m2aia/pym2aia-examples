@@ -1,6 +1,7 @@
 wget
 matplotlib==3.5.0
 seaborn
+scipy
 seaborn_image
 tensorflow
 umap-learn
