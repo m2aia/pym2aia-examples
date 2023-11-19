@@ -69,7 +69,7 @@ def show_images_in_row(image_list, titles=None, cmap=['tab20c']):
         cmap = [cmap] * num_images
     # Loop through the images and titles (if provided) to display them
     for i in range(num_images):
-        ax[i].imshow(image_list[i], cmap=cmap[i])
+        ax[i].imshow(image_list[i], cmap=cmap[i], interpolation='bilinear')
         ax[i].axis('off')  # Turn off axis labels
         if titles:
             ax[i].set_title(titles[i])
