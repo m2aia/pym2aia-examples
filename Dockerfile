@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
@@ -17,10 +17,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 
-RUN python3 -m pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple pym2aia
+RUN python3 -m pip install m2aia
 RUN python3 -m pip install wget matplotlib==3.5.0 seaborn seaborn_image tensorflow umap-learn torch torchvision tensorflow efficientnet_pytorch jupyter
  
-
 VOLUME [ "/examples" ]
 
 WORKDIR /examples
