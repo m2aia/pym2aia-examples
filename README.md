@@ -22,12 +22,12 @@ Prepare source files
 
 Build without gpu support (Example I-III)
 1. ``` docker build -t pym2aia-examples -f Dockerfile . ```
-2. ``` docker run -ti --rm -v $(pwd):/examples pym2aia-examples Example_I.ipynb $(id -u $USER)```
+2. ``` docker run -ti --rm -v $(pwd):/examples pym2aia-examples Example_I_ImzMLMetaData.ipynb $(id -u $USER)```
 
 
 Build with gpu support (Example IV-VI)
 1. ``` docker build -t pym2aia-examples -f Dockerfile.gpu . ```
-2. ``` docker run -ti --rm --gpus all -v $(pwd):/examples pym2-gpu Example_IV_A.ipynb $(id -u $USER)```
+2. ``` docker run -ti --rm --gpus all -v $(pwd):/examples pym2-gpu Example_IV_A_AutoEncoder_IndividualModels.ipynb $(id -u $USER)```
 
 
 if the last argument ```$(id -u $USER)``` is set, all items in ```$(pwd)/data```, ```$(pwd)/results``` and ```$(pwd)/models``` will change ownership to the current user (otherwise files will be owned by the root user).
